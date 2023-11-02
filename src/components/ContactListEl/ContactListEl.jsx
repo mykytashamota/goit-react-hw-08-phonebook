@@ -1,22 +1,28 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { Button, Item } from './ContactListEl.styled';
-import { useDispatch } from 'react-redux';
-import { deleteContact } from 'redux/contactsSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteContact } from 'redux/operations';
+import { selectIsLoading } from 'redux/selectors';
 
 export const ContactListEl = ({ id, name, number }) => {
+  const isDisabled = useSelector(selectIsLoading);
   const dispatch = useDispatch();
   return (
     <Item>
       {name}: {number}
-      <Button type="button" onClick={() => dispatch(deleteContact(id))}>
+      <Button
+        type="button"
+        disabled={isDisabled}
+        onClick={() => dispatch(deleteContact(id))}
+      >
         Delete
       </Button>
     </Item>
   );
 };
 
-// ContactListEl.propTypes = {
-//   id: PropTypes.string.isRequired,
-//   name: PropTypes.string.isRequired,
-//   number: PropTypes.string.isRequired,
-// };
+ContactListEl.propTypes = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
+};

@@ -1,51 +1,30 @@
-import { useState, useEffect } from 'react';
 import { Layout } from '../LayoutComponent/Layout.styled';
 import { ContactForm } from '../ContactForm/ContactForm';
 import { ContactList } from '../ContactList/ContactList';
 import { ContactFilter } from '../ContactFilter/ContactFilter';
 import { AppTitle, ContactsTitle } from './App.styled';
-
-const key = 'contacts';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchContacts } from 'redux/operations';
+import { selectError, selectIsLoading } from 'redux/selectors';
 
 export const App = () => {
-  const [contacts, setContacts] = useState(() => {
-    return JSON.parse(localStorage.getItem(key) ?? []);
-  });
-  const [filter, setFilter] = useState('');
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    localStorage.setItem(key, JSON.stringify(contacts));
-  }, [contacts]);
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
-  const onContactFormSubmit = contact => {
-    const isPresent = savedContact =>
-      savedContact.name.toLowerCase() === contact.name.toLowerCase();
-
-    if (contacts.some(isPresent)) {
-      return alert(`${contact.name} is already in contacts.`);
-    }
-
-    setContacts(contacts => [...contacts, contact]);
-  };
-
-  const onContactFilterChange = evt => {
-    setFilter(evt.target.value.toLowerCase());
-  };
-
-  const onContactDelete = contactId => {
-    setContacts(contacts.filter(contact => contact.id !== contactId));
-  };
-
-  const filteredContacts = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(filter.toLowerCase())
-  );
   return (
     <Layout>
       <AppTitle>Phonebook</AppTitle>
-      <ContactForm onSubmit={onContactFormSubmit} />
+      <ContactForm />
       <ContactsTitle>Contacts</ContactsTitle>
-      <ContactFilter onChange={onContactFilterChange} value={filter} />
-      <ContactList contacts={filteredContacts} onDelete={onContactDelete} />
+      <ContactFilter />
+      {isLoading && !error && <div>Loading...</div>}
+      <ContactList />
     </Layout>
   );
 };
