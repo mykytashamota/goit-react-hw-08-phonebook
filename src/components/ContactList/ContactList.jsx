@@ -1,13 +1,13 @@
 import { ContactListEl } from 'components/ContactListEl/ContactListEl';
 import { useSelector } from 'react-redux';
-import { selectFilteredContacts } from 'redux/selectors';
+import { selectFilteredContacts } from 'redux/filter/selectors';
 
 export const ContactList = () => {
   const filteredContacts = useSelector(selectFilteredContacts);
   return (
     <ul>
-      {filteredContacts.map(({ id, name, phone }) => (
-        <ContactListEl key={id} id={id} name={name} number={phone} />
+      {filteredContacts.map(({ id, name, number }) => (
+        <ContactListEl key={id} id={id} name={name} number={number} />
       ))}
     </ul>
   );

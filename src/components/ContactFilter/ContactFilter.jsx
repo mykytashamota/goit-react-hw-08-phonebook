@@ -1,20 +1,24 @@
-import { Input, Label } from './ContactFilter.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectFilter } from 'redux/selectors';
-import { changeFilter } from 'redux/filterSlice';
+import { selectFilter } from 'redux/filter/selectors';
+import { changeFilter } from 'redux/filter/slice';
+import { TextField } from '@mui/material';
 
 export const ContactFilter = () => {
   const filter = useSelector(selectFilter);
   const dispatch = useDispatch();
   return (
-    <Label>
-      Find contacts by name
-      <Input
+    <>
+      <TextField
+        id="outlined-basic"
+        label="Search"
+        variant="outlined"
+        color="secondary"
         type="text"
         name="filter"
-        onChange={e => dispatch(changeFilter(e.target.value.toLowerCase()))}
         value={filter}
+        onChange={e => dispatch(changeFilter(e.target.value.toLowerCase()))}
+        size="small"
       />
-    </Label>
+    </>
   );
 };
