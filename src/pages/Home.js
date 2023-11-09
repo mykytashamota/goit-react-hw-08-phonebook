@@ -7,7 +7,8 @@ const Home = () => {
   return (
     <CenterWrapper>
       <HomeTitle>
-        Welcome to <AccentText>ContactBook</AccentText> 🥰
+        Welcome to <AccentText>ContactBook</AccentText>! 🥰 Add, edit, and find
+        your contacts with ease. Enjoy!
       </HomeTitle>
       <Button
         variant="contained"

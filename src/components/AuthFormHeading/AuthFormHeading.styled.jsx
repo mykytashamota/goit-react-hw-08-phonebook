@@ -6,7 +6,8 @@ export const Wrapper = styled.div`
 `;
 
 export const Greeting = styled.p`
-  font-size: 14px;
+fontSize: '18px',
+fontWeight: 'bold',
   color: #757575;
 `;
 
@@ -20,5 +21,5 @@ export const Redirect = styled.p`
 `;
 
 export const LinkStyled = styled(Link)`
-  color: #7f56d9;
+  color: #01579b;
 `;

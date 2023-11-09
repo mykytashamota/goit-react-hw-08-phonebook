@@ -11,5 +11,5 @@ export const HomeTitle = styled.h1`
 `;
 
 export const AccentText = styled.span`
-  color: #7f56d9;
+  color: #ed6c02;
 `;

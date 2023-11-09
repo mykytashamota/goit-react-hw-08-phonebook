@@ -11,16 +11,17 @@ export const AuthHeading = ({ children }) => {
   const { pathname } = useLocation();
   return (
     <Wrapper>
-      <Greeting>Welcome! 👋</Greeting>
+      <Greeting>Welcome! 👋 Let ContactBook brighten your day!</Greeting>
       <Heading>{children}</Heading>
       {pathname.includes('/login') ? (
         <Redirect>
-          Don't have an account yet?{' '}
+          Register now, no need for carrier pigeons!{' '}
           <LinkStyled to="/register">Sign up</LinkStyled>
         </Redirect>
       ) : (
         <Redirect>
-          Already have an account? <LinkStyled to="/login">Sign in</LinkStyled>
+          Already on board? 👋 Ready to dive back in?{' '}
+          <LinkStyled to="/login">Sign in</LinkStyled>
         </Redirect>
       )}
     </Wrapper>
