@@ -16,7 +16,7 @@ const Home = () => {
         component={Link}
         to="/register"
       >
-        Start manage contacts
+        Navigate Contact Galaxy! 🌌
       </Button>
     </CenterWrapper>
   );

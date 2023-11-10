@@ -22,7 +22,10 @@ export const ContactFilter = () => {
         value={filter}
         onChange={e => dispatch(changeFilter(e.target.value.toLowerCase()))}
         size="small"
-        style={{ marginLeft: 15 }}
+        sx={{
+          marginLeft: '15px',
+          marginTop: '18px',
+        }}
       />
     </>
   );

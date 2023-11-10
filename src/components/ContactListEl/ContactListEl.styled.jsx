@@ -3,9 +3,6 @@ import styled from 'styled-components';
 export const Item = styled.li`
   font-size: 18px;
   margin-top: 25px;
-  // &:not(:last-child) {
-  //   margin-bottom: 15px;
-  }
 `;
 
 export const Button = styled.button`

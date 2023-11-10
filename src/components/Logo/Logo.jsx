@@ -1,10 +1,10 @@
-import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
 import { LinkStyled } from './Logo.styled';
 
 export const Logo = () => {
   return (
     <LinkStyled to="/">
-      <AccountBoxIcon sx={{ fontSize: 35 }} />
+      <ContactPhoneIcon sx={{ fontSize: 35 }} />
       ContactBook
     </LinkStyled>
   );

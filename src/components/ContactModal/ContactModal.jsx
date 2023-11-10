@@ -25,6 +25,9 @@ export const ContactModal = () => {
         variant="contained"
         color="secondary"
         onClick={() => setIsOpen(true)}
+        sx={{
+          marginTop: '20px',
+        }}
       >
         <GroupAddIcon sx={{ marginRight: '7px' }} />
         Add
